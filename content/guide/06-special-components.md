@@ -100,9 +100,9 @@ La expresión dentro de `{...}` puede ser cualquier expresión valida de JavaScr
 ```
 
 
-### <:Window> tags
+### Etiqueta <:Window>
 
-The `<:Window>` tag gives you a convenient way to declaratively add event listeners to `window`. Event listeners are automatically removed when the component is destroyed.
+La etiqueta `<:Window>` le proporciona una manera conveniente de agregar declarativamente detectores de eventos a `window`. Los detectores de eventos (event listeners) se eliminaran automaticamente cuando el componente sea destruido.
 
 ```html
 <:Window on:keydown='set({ key: event.key, keyCode: event.keyCode })'/>
@@ -127,7 +127,7 @@ The `<:Window>` tag gives you a convenient way to declaratively add event listen
 </style>
 ```
 
-You can also bind to certain values — so far `innerWidth`, `outerWidth`, `innerHeight`, `outerHeight`, `scrollX`, `scrollY` and `online`:
+Tambien se puede vincular a ciertos valores - hasta aqui `innerWidth`, `outerWidth`, `innerHeight`, `outerHeight`, `scrollX`, `scrollY` y `online`:
 
 ```html
 <:Window bind:scrollY='y'/>
@@ -155,11 +155,11 @@ You can also bind to certain values — so far `innerWidth`, `outerWidth`, `inne
 ```
 
 
-### <:Head> tags
+### Etiqueta <:Head>
 
-If you're building an application with Svelte — particularly if you're using [Sapper](https://sapper.svelte.technology) — then it's likely you'll need to add some content to the `<head>` of your page, such as adding a `<title>` element.
+Si esta construyendo una aplicación con Svelte - particularmente si esta usando [Sapper](https://sapper.svelte.technology) —  entonces es probable que necesite agregar algun contenido al `<head>` de su página, como por ejemplo un elemento `<title>`.
 
-You can do that with the `<:Head>` tag:
+Puede lograrlo con la etiqueta `<:Head>`: 
 
 ```html
 <:Head>
@@ -167,4 +167,4 @@ You can do that with the `<:Head>` tag:
 </:Head>
 ```
 
-When [server rendering](#server-side-rendering), the `<head>` contents can be extracted separately to the rest of the markup.
+Cuando usa [server rendering](#server-side-rendering), los contenidos del `<head>` se pueden extraer por separado al resto del markup.
