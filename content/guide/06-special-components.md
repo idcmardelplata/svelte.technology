@@ -1,13 +1,13 @@
 ---
-title: Special components
+title: Componentes especiales
 ---
 
-Svelte includes a handful of built-in components with special behaviour.
+Svelte incluye un puñado de componentes incorporados con un comportamiento especial.
 
 
-### <:Self> tags
+### Etiquetas <:Self>
 
-Sometimes, a component needs to embed itself recursively — for example if you have a tree-like data structure. In Svelte, that's accomplished with the `<:Self>` tag:
+A veces, un componente necesita incrustrarse recursivamente - por ejemplo si usted tiene una estructura de datos similar a un arbol. En Svelte, esto se logra con la etiqueta `<:Self>`:
 
 ```html
 {{#if countdown > 0}}
@@ -25,9 +25,9 @@ Sometimes, a component needs to embed itself recursively — for example if you 
 ```
 
 
-### <:Component> tags
+### Etiqueta <:Component>
 
-If you don't know what kind of component to render until the app runs — in other words, it's driven by state — you can use `<:Component>`:
+Si no sabe que tipo de componente se renderizara hasta que la aplicación se ejecute - en otras palabras, es manejado por el estado - puede utilizar `<:Component>`:
 
 ```html
 <input type=checkbox bind:checked=foo> foo
@@ -53,9 +53,9 @@ If you don't know what kind of component to render until the app runs — in ot
 <p style='color: blue'>Blue {{name}}</p>
 ```
 
-> Note that `Red` and `Blue` are items in `data`, *not* `components`, unlike if we were doing `<Red>` or `<Blue>`.
+> Tenga en cuenta que `Red` y `Blue` son elementos en `data`, *no* en `components`, a diferencia de que si estuvieramos haciendo `<Red>` o `<Blue>`.
 
-The expression inside the `{...}` can be any valid JavaScript expression. For example, it could be a [computed property](#computed-properties):
+La expresión dentro de `{...}` puede ser cualquier expresión valida de JavaScript. Por ejemplo, podria ser una [propiedad calculada](#computed-properties): 
 
 ```html
 <label><input type=radio bind:group=size value='small'> small</label>
