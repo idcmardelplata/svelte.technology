@@ -624,9 +624,9 @@ Las propiedades calculadas pueden, por supuesto devolver funciones. Por ejemplo,
 ```
 
 
-### Lifecycle hooks
+### Ganchos del ciclo de vida
 
-There are two 'hooks' provided by Svelte for adding control logic – `oncreate` and `ondestroy`:
+Existen dos ganchos provistos por Svelte para agregar logica de control - `oncreate` y `ondestroy`:
 
 ```html
 <p>
@@ -662,9 +662,9 @@ There are two 'hooks' provided by Svelte for adding control logic – `oncreate
 ```
 
 
-### Helpers
+### Ayudantes
 
-Helpers are simple functions that are used in your template. In the example above, we want to ensure that `minutes` and `seconds` are preceded with a `0` if they only have one digit, so we add a `leftPad` helper:
+Los helpers son simples funciones que se usan en su plantilla. En el ejemplo anterior, queremos asegurarnos de que `minutes` y `seconds` sera precedidos por un `0` si solo tienen un digito, para esto agreguemos un helper llamado `leftPad`:
 
 ```html
 <p>
