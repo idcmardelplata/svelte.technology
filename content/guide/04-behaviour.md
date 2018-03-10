@@ -790,8 +790,7 @@ Los eventos personalizados son solo funciones que toman como argumento un nodo y
 
 ### Espacios de nombres
 
-
-Components are assumed to be in the HTML namespace. If your component is designed to be used inside an `<svg>` element, you need to specify the namespace:
+Los componentes asumen que estan en el espacio de nombres HTML. Si su componente esta diseñado para ser utilizado para ser usado dentro de un elemento `<svg>`, necesitara especificar el namespace:
 
 ```html
 <svg viewBox='0 0 1000 1000' style='width: 100%; height: 100%;'>
