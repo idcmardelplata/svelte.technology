@@ -704,15 +704,14 @@ Los helpers son simples funciones que se usan en su plantilla. En el ejemplo ant
 	};
 </script>
 ```
+Por supuesto, podria usar `leftPad` dentro de las propiedades calculadas en lugar de usarlo en su plantilla. No hay una regla rigida acerca de cuando deben usarse expresiones con helpers freante a cuando deben usarse las propiedades calculadas - haga lo que sea que haga que su componente sea mas facil de entender para los siguientes desarrolladores.
 
-Of course, you could use `leftPad` inside the computed properties instead of in the template. There's no hard and fast rule about when you should use expressions with helpers versus when you should use computed properties – do whatever makes your component easier for the next developer to understand.
-
-> Helper functions should be *pure* – in other words, they should not have side-effects, and their returned value should only depend on their arguments.
+> Las funciones helpers deberian de ser *puras* - en otras palabras, ellas no deberian tener efectos secundarios, y su valor de retorno solamente deberia de depender de sus argumentos.
 
 
-### Custom methods
+### Metodos personalizados
 
-In addition to the [built-in methods](#component-api), you can add methods of your own:
+Ademas de los [metodos incorporados](#component-api), puede agregar sus propios metodos:
 
 ```html
 <script>
@@ -726,7 +725,7 @@ In addition to the [built-in methods](#component-api), you can add methods of yo
 </script>
 ```
 
-These become part of the component's API:
+Estos se volveran parte de la API del componente:
 
 ```js
 import MyComponent from './MyComponent.html';
@@ -738,14 +737,14 @@ var component = new MyComponent({
 component.say('👋');
 ```
 
-Methods (whether built-in or custom) can also be called inside [event handlers](#event-handlers):
+Los metodos (ya sean incorporados o personalizados) tambien se pueden llamar dentro de los [controladores de eventos](#event-handlers):
 
 ```html
 <button on:click='say("hello")'>say hello!</button>
 ```
 
 
-### Custom event handlers
+### Controladores de eventos personalizados
 
 Soon, we'll learn about [event handlers](#event-handlers) – if you want, skip ahead to that section first then come back here!
 
