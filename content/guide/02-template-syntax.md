@@ -2,12 +2,12 @@
 title: Template syntax
 ---
 
-Rather than reinventing the wheel, Svelte templates are built on foundations that have stood the test of time: HTML, CSS and JavaScript. There's very little extra stuff to learn.
+En lugar de reinventar la rueda, las plantillas de Svelte se basan en fundamentos que han resistido la pruebe del tiempo: HTML, CSS y JavaScript. Hay muy pocas cosas extra para aprender.
 
 
-### Tags
+### Etiquetas
 
-Tags allow you to bind data to your template. Whenever your data changes (for example after `component.set(...)`), the DOM updates automatically. You can use any JavaScript expression in templates, and it will also automatically update:
+Las etiquetas le permiten vincular datos a su plantilla. Siempre que sus datos cambien (por ejemplo después de `component.set(...)`), el DOM se actualizara automáticamente. Puede usar cualquier expresion de JavaScript en sus plantillas, y tambien se actualizara automáticamente:
 
 ```html
 <p>{{a}} + {{b}} = {{a + b}}</p>
@@ -20,7 +20,7 @@ Tags allow you to bind data to your template. Whenever your data changes (for ex
 }
 ```
 
-You can also use tags in attributes:
+Tambien puede usar etiquetas en los atributos:
 
 ```html
 <h1 style='color: {{color}};'>{{color}}</h1>
@@ -33,14 +33,14 @@ You can also use tags in attributes:
 	"hideParagraph": false
 }
 ```
-[Boolean attributes](https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes) like `hidden` will be omitted if the tag expression evaluates to false.
+[Atributos boleanos](https://www.w3.org/TR/html5/infrastructure.html#sec-boolean-attributes) como `hidden` se omitirán si la expresión de la etiqueta se evalúa como falsa.
 
-> While tags are delimited using `{{` and `}}`, Svelte does not use [Mustache](https://mustache.github.io/) syntax. Tags are just JavaScript expressions.
+> Mientras que las etiquetas están delimitadas usando `{{` y `}}`, Svelte no usa la sintaxis de [Mustache](https://mustache.github.io/). Las etiquetas son solo expresiones de JavaScript.
 
 
 ### Triples
 
-Ordinary tags render expressions as plain text. If you need your expression interpreted as HTML, wrap it in triple braces, `{{{` and `}}}`.
+Las etiquetas ordinarias representan texto plano. Si necesita que su expresión sea interpretada como HTML, envuélvala en llaves triples, `{{{` y `}}}`.
 
 ```html
 <p>This HTML: {{html}}</p>
@@ -53,14 +53,14 @@ Ordinary tags render expressions as plain text. If you need your expression inte
 }
 ```
 
-As with tags, you can use any JavaScript expression in triples, and it will automatically update the document when your data changes.
+Al igual que con las etiquetas, es posible usar cualquier expresión de JavaScript con triples, y actualizara automáticamente el documento cuando cambien los datos.
 
-> Triples will **not** sanitize the HTML before rendering it! If you are displaying user input, you are responsible for first sanitizing it. Not doing so opens you up to all sorts of different attacks.
+> Los triples *no* limpiara el html antes de representarlo! Si esta mostrando la entrada del usuario, usted es responsable de primero limpiarlo. No hacerlo habré su aplicación a todo tipo de ataques diferentes.
 
 
-### If blocks
+### Bloques if
 
-Control whether or not part of your template is rendered by wrapping it in an if block.
+Controle si una parte de su plantilla sera renderizada envolviéndola en un bloque if.
 
 ```html-no-repl
 {{#if user.loggedIn}}
@@ -72,7 +72,7 @@ Control whether or not part of your template is rendered by wrapping it in an if
 {{/if}}
 ```
 
-You can combine the two blocks above with `{{else}}`:
+Puede combinar los dos bloques de arriba con `{{else}}`:
 
 ```html-no-repl
 {{#if user.loggedIn}}
@@ -82,7 +82,7 @@ You can combine the two blocks above with `{{else}}`:
 {{/if}}
 ```
 
-You can also use `{{elseif ...}}`:
+También puede usar `{{elseif ...}}`:
 
 ```html
 {{#if x > 10}}
@@ -100,9 +100,9 @@ You can also use `{{elseif ...}}`:
 }
 ```
 
-### Each blocks
+### Bloques Each.
 
-Iterate over lists of data:
+Itera sobre una lista de datos:
 
 ```html
 <h1>Cats of YouTube</h1>
@@ -133,7 +133,7 @@ Iterate over lists of data:
 }
 ```
 
-You can access the index of the current element with *expression* as *name*, *index*:
+Puede acceder al indice del elemento actual con *expresión* as *name*, *index*:
 
 ```html
 <div class='grid'>
@@ -161,9 +161,9 @@ You can access the index of the current element with *expression* as *name*, *in
 }
 ```
 
-> By default, if the list `a, b, c` becomes `a, c`, Svelte will *remove* the third block and *change* the second from `b` to `c`, rather than removing `b`. If that's not what you want, use a [keyed each block](#keyed-each-blocks).
+> Por defecto, si la lista `a, b, c` se convierte en `a, c`, Svelte *eliminara* el tercer bloque y *cambiara* el segundo de `b` a `c`, en lugar de eliminar `b`. Si eso no es lo que quiere, use un [keyed each block](#keyed-each-blocks).
 
-Also, if you wish, you can perform one level of array destructuring on the elements of the array directly in the each block:
+Ademas, si lo desea, puede realizar un nivel de desestructuración en los elementos del array directamente en el bloque each:
 
 ```html
 <h1>It's the cats of YouTube again</h1>
@@ -197,7 +197,7 @@ Also, if you wish, you can perform one level of array destructuring on the eleme
 
 ### Await blocks
 
-You can represent the three states of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) — pending, fulfilled and rejected — with an `await` block:
+Puede representar los tres estados de una [Promesa](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) - pending, fulfilled y rejected - con un bloque `await`:
 
 ```html
 {{#await promise}}
@@ -221,12 +221,12 @@ You can represent the three states of a [Promise](https://developer.mozilla.org/
 </script>
 ```
 
-If the expression in `{{#await expression}}` *isn't* a promise, Svelte skips ahead to the `then` section.
+Si la expresión en `{{#await expression}}` *no es* una promise, Svelte saltara directamente a la sección `then`.
 
 
-### Directives
+### Directivas.
 
-The last place where Svelte template syntax differs from regular HTML: *directives* allow you to add special instructions for adding [event handlers](#event-handlers), [two-way bindings](#two-way-binding), [refs](#refs) and so on. We'll cover each of those in later stages of this guide – for now, all you need to know is that directives can be identified by the `:` character:
+El último lugar donde la sintaxis de templates de Svelte difiere del HTML abitual: *directives*  le permite añadir instrucciones especiales para agregar [manejadores de eventos](#event-handlers), [two-way bindings](#two-way-binding), [refs](#refs) y así. Cubriremos cada uno de ellos en etapas posteriores de esta guía - Por ahora, todo lo que necesita saber es que las directivas pueden ser identificadas por el carácter `:`.
 
 ```html
 <p>Count: {{count}}</p>
@@ -238,5 +238,4 @@ The last place where Svelte template syntax differs from regular HTML: *directiv
 	"count": 0
 }
 ```
-
-> Technically, the `:` character is used to denote namespaced attributes in HTML. These will *not* be treated as directives, if encountered.
+> Técnicamente, el carácter `:` es usado para denotar atributos de namespaces en HTML. Estas *no* se trataran como directivas si se encuentran.
