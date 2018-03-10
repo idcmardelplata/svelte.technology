@@ -2,11 +2,12 @@
 title: Plugins
 ---
 
-Svelte can be extended with plugins and extra methods.
+Svelte se puede extender con plugins y metodos extra.
 
-### Transition plugins
 
-The [svelte-transitions](https://github.com/sveltejs/svelte-transitions) package includes a selection of officially supported transition plugins, such as [fade](https://github.com/sveltejs/svelte-transitions-fade), [fly](https://github.com/sveltejs/svelte-transitions-fly) and [slide](https://github.com/sveltejs/svelte-transitions-slide). You can include them in a component like so:
+### Plugin de transicion.
+
+El paquete [svelte-transitions](https://github.com/sveltejs/svelte-transitions) incluye una selección de complementos de transición admitidos oficialmente, tales como [fade](https://github.com/sveltejs/svelte-transitions-fade), [fly](https://github.com/sveltejs/svelte-transitions-fly) y [slide](https://github.com/sveltejs/svelte-transitions-slide). Puede incluirlos en un componente como tal:
 
 ```html
 <label>
@@ -34,9 +35,9 @@ The [svelte-transitions](https://github.com/sveltejs/svelte-transitions) package
 ```
 
 
-### Extra methods
+### Metodos extra
 
-The [svelte-extras](https://github.com/sveltejs/svelte-extras) package includes a handful of methods for tweening (animating), manipulating arrays and so on.
+El paquete [svelte-extras](https://github.com/sveltejs/svelte-extras) incluye un puñado de metodos para interpolar (animar), manipular arrays etc...
 
 ```html
 <input bind:value='newTodo' placeholder='buy milk'>
