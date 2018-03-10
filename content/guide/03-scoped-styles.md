@@ -2,11 +2,11 @@
 title: Scoped styles
 ---
 
-One of Svelte's key tenets is that components should be self-contained and reusable in different contexts. Because of that, it has a mechanism for *scoping* your CSS, so that you don't accidentally clobber other selectors on the page.
+Uno de los principios clave de Svelte, es que los componentes deben ser autocontenidos y reutilizables en diferentes contextos. Por esto, tiene un mecanismo para el *ambito* de su CSS, para que no choque accidentalmente con otros selectores en la pagina.
 
-### Adding styles
+### Agregando estilos.
 
-Your component template can have a `<style>` tag, like so:
+Su plantilla de componente puede tener una etiqueta `<style>`, como esta:
 
 ```html
 <div class='foo'>
@@ -23,20 +23,20 @@ Your component template can have a `<style>` tag, like so:
 ```
 
 
-### How it works
+### ¿Como funciona?
 
-Open the example above in the REPL and inspect the element to see what has happened – Svelte has added a `svelte-[uniqueid]` attribute to the element, and transformed the CSS selector accordingly. Since no other element on the page can share that selector, anything else on the page with `class="foo"` will be unaffected by our styles.
+Abra el ejemplo de arriba en el REPL e inspeccióne el elemento para ver lo que ha sucedido - Svelte ha agregado un atributo `svelte-[uniqueid]` al elemento, y transformo el selector de CSS en consecuencia. Como ningún otro elemento en la página puede compartir ese selector, cualquier otra cosa en la página que tenga `class="foo"` no se vera afectada por nuestros estilos.
 
-This is vastly simpler than achieving the same effect via [Shadow DOM](http://caniuse.com/#search=shadow%20dom) and works everywhere without polyfills.
+Esto es mucho mas simple que lograr el mismo efecto usando el [Shadow DOM](http://caniuse.com/#search=shadow%20dom) y funciona en todas partes sin polyfills.
 
-> Svelte will add a `<style>` tag to the page containing your scoped styles. Dynamically adding styles may be impossible if your site has a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP). If that's the case, you can use scoped styles by [server-rendering your CSS](#rendering-css) and using the `css: false` compiler option (or `--no-css` with the CLI).
+> Svelte agregara una etiqueta `<style>` a la pagina conteniendo sus scoped styles. La adición dinamica de estilos puede llegar a ser imposible si su sitio tiene una [Politica de seguridad de contenido](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP). Si ese es el caso puede usar estilos con ambito via [renderizado de CSS en el servidor](#rendering-css) y usando la opción del compilador  `css: false` (o `--no-css` en el CLI).
 
 
-### Cascading rules
+### Reglas en cascada.
 
-By default, the usual cascading mechanism still applies – any global `.foo` styles would still be applied, and if our template had [nested components](#nested-components) with `class="foo"` elements, they would inherit our styles.
+Por defecto, el mecanismo en cascada normal todavia se aplica - cualquier estilo global `.foo` todavia se aplicaria, y si su plantilla tiene [componentes anidados](#nested-components) con elementos `class="foo"`, hellos heredarian nuestros estilos.
 
-If the `cascade: false` option is passed to the compiler, styles will *only* apply to the current component, unless you opt in to cascading with the `:global(...)` modifier:
+Si la opción `cascade: false` se pasa al compilador, los estilos *solo* se aplicaran al componente actual, a menos que opte por entrar en la cascada con el midificador `:global(...)` .
 
 <!-- TODO `cascade: false` in the REPL -->
 
@@ -68,16 +68,14 @@ If the `cascade: false` option is passed to the compiler, styles will *only* app
 </script>
 ```
 
-The `cascade: false` behaviour is recommended, and will be switched on by default in future versions of Svelte.
+Se recomienda el comportamiento `cascade: false` y se activara de manera predeterminada en futuras versiones de Svelte.
 
-> Scoped styles are *not* dynamic – they are shared between all instances of a component. In other words you can't use `{{tags}}` inside your CSS.
+> Los ambitos de estilos no son dinamicos - se comparten entre todas las instancias de un componente. En otras palabras, no puede usar `{{tags}}` dentro de su CSS.
 
+### Eliminación de estilos no utilizados
 
-### Unused style removal
+Si esta utilizando la opción recomendada `cascade: false`, Svelte identificara y eliminara cualquier estilo que no este siendo utilizado en su aplicación. Tambien emitira una advertencia para que pueda eliminarlos del codigo fuente.
 
-If you're using the recommended `cascade: false` option, Svelte will identify and remove any styles that it can guarantee are not being used in your app. It will also emit a warning so that you can remove them from the source.
+### Selectores especiales.
 
-
-### Special selectors
-
-If you have a [ref](#refs) on an element, you can use this as a CSS selector. An element with `ref:foo` can be styled with `ref:foo { color: whatever; }`. The `ref:*` selector has the same specificity as a class or attribute selector.
+Si tiene un [ref](#refs) en un elemento, puede utilizarlo como un selector de CSS. Un elemento con `ref:foo` se puede estilizar con `ref:foo { color: whatever; }`. El selector `ref:*` tiene la misma especificidad que un selector de clase o atributo.
