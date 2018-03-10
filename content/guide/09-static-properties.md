@@ -1,11 +1,11 @@
 ---
-title: Static properties
+title: Propiedades estaticas
 ---
 
 
 ### Setup
 
-In some situations, you might want to add static properties to your component constructor. For that, we use the `setup` property:
+En algunas situaciónes, es posible que desee agregar propiedades estaticas al constructor de su componente. Para ello, se utiliza la propiedad `setup`:
 
 ```html
 <p>check the console!</p>
