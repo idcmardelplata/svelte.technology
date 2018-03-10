@@ -93,7 +93,7 @@ Un componente puede contener un elemento `<slot></slot>` que permite que el comp
 {}
 ```
 
-The `<slot>` element can contain 'fallback content', which will be used if no children are provided for the component:
+El elemento `<slot>` puede contener 'contenido fallback', que se usara si no se proporcionan hijos para el componente:
 
 ```html
 <Box></Box>
@@ -130,7 +130,7 @@ The `<slot>` element can contain 'fallback content', which will be used if no ch
 {}
 ```
 
-You can also have *named* slots. Any elements with a corresponding `slot` attribute will fill these slots:
+Tambien puede tener *slots nombrados*. Cualquier elemento con un correspondiente atributo `slot` llenara estos espacios:
 
 ```html
 <ContactCard>
