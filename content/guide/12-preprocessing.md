@@ -1,15 +1,14 @@
 ---
-title: Preprocessing
+title: Preprocesadores
 ---
 
-Some developers like to use non-standard languages such as [Pug](https://pugjs.org/api/getting-started.html), [Sass](http://sass-lang.com/) or [CoffeeScript](http://coffeescript.org/).
+A algunos desarrolladores les gusta usar lenguajes no estandar como  [Pug](https://pugjs.org/api/getting-started.html), [Sass](http://sass-lang.com/) o [CoffeeScript](http://coffeescript.org/).
 
-It's possible to use these languages, or anything else that can be converted to HTML, CSS and JavaScript, using *preprocessors*.
-
+Es posible usar esos lenguajes, o cualquier otra cosa que se pueda convertir a HTML, CSS y JavaScript, usando *preprocesadores*.
 
 ### svelte.preprocess
 
-Svelte exports a `preprocess` function that takes some input source code and returns a Promise for a standard Svelte component, ready to be used with `svelte.compile`:
+Svelte exporta una funcion llamada `preprocess` que toma un codigo fuente de entrada y devuelve un Promise para un componente estandar de Svelte, listo para ser utilizado con `svelte.compile`:
 
 ```js
 const svelte = require('svelte');
@@ -47,15 +46,15 @@ svelte.preprocess(input, {
 });
 ```
 
-The `markup` preprocessor, if specified, runs first. The `content` property represents the entire input string.
+El preprocesador `markup`, si se especifica, corre primero. La propiedad `content` representa todo el string de entrada.
 
-The `style` and `script` preprocessors receive the contents of the `<style>` and `<script>` elements respectively, along with any `attributes` on those elements (e.g. `<style lang='scss'>`).
+Los preprocesadores `style` y `script` reciven el contenido de los elementos `<style>` y `<script>` respectivamente, junto con cualquier atributo en esos elementos (ej `<style lang='scss'>`). 
 
-All three preprocessors are optional. Each should return a `{ code, map }` object or a Promise that resolves to a `{ code, map }` object, where `code` is the resulting string and `map` is a sourcemap representing the transformation.
+Los tres preprocesadores son opcionales. Cada uno deve devolver un objeto `{ code, map }` o una Promise que se resuelve en un objeto `{ code, map }`, donde `code` es la cadena resultante y `map` es un sourcemap representando la transformación.
 
-> The returned `map` objects are not currently used by Svelte, but will be in future versions
+> Los objetos `map` retornados actualmente no son utilizados por Svelte, pero lo seran en futuras versiones
 
 
-### Using build tools
+### Usando herramientas de compilacipon
 
-Many build tool plugins, such as [rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) and [svelte-loader](https://github.com/sveltejs/svelte-loader), allow you to specify `preprocess` options, in which case the build tool will do the grunt work.
+Cualquier complemento de herramientas de compilación, tales como [rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) y [svelte-loader](https://github.com/sveltejs/svelte-loader), le permiten especificar las opciones `preprocess`, en cuyo caso la herramienta de compilación funcionara a la perfección.
