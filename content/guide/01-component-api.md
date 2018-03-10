@@ -2,7 +2,7 @@
 title: Component API
 ---
 
-As we saw above, you create a component instance with the `new` keyword:
+Como hemos visto previamente, usted crea una instancia de un componente con la palabra clave `new`.
 
 ```js
 import MyComponent from './MyComponent.html';
@@ -25,12 +25,11 @@ const component = new MyComponent({
 });
 ```
 
-Every Svelte component instance has a small number of methods you can use to control it, in addition to any [custom methods](#custom-methods) you add.
-
+Cada instancia de componente de Svelte tiene una pequeña cantidad de métodos que pueden utilizarse para controlarlo, ademas de cualquier [método personalizado](#custom-methods) que usted agregue.
 
 ### component.set(data)
 
-This updates the component's state with the new values provided and causes the DOM to update. `data` must be a plain old JavaScript object (POJO). Any properties *not* included in `data` will remain as they were.
+Esto actualiza el estado del componente con los nuevos valores proporcionados y hace que el DOM se actualice. `data` debe ser un simple objeto JavaScript antiguo (POJO). Cualquier propiedad *no* incluida en `data` permanecerá como estaba.
 
 ```js
 component.set({
@@ -43,20 +42,20 @@ component.set({
 });
 ```
 
-> If you've used Ractive in the past, this is very similar to `ractive.set(...)`, except that instead of doing `ractive.set('foo', 'bar')` you must always do `ractive.set({foo: 'bar'})`, and you cannot set nested keypaths directly. It's also very similar to React's `setState`, except that it causes synchronous updates, meaning the DOM is always in a predictable state.
+> Si ha usando Reactive en el pasado, esto se vera muy similar a `reactive.set(...)`, excepto que en lugar de hacer `ractive.set('foo', 'bar')` siempre debe hacer `ractive.set({foo: 'bar'})`, y no puede establecer keypaths anidados directamente. También es muy similar al `setState` de React, excepto que causa actualizaciones sincrónicas, lo que significa que el DOM siempre estará en un estado predecible.
 
 
 ### component.get(key)
 
-Returns the current value of `key`:
+Retorna el valor actual de `key`:
 
 ```js
 console.log(component.get('answer')); // 'ask your mother'
 ```
 
-This will also retrieve the value of [computed properties](#computed-properties).
+Esto tambien recuperara el valor de las [propiedades computadas](#computed-properties).
 
-You can also call `component.get()` without any arguments to retrieve an object of all keys and values, including computed properties. This works particularly nicely with ES6 destructuring:
+Tambíen puede llamar a `component.get()` sin ningún argumento para recuperar un objeto con todas las claves y valores, incluidas las propiedades computadas. Esto funciona particularmente bien con la desestructuración de ES6:
 
 ```js
 const { foo, bar, baz } = component.get();
@@ -65,7 +64,7 @@ const { foo, bar, baz } = component.get();
 
 ### component.observe(key, callback[, options])
 
-This method allows you to respond to changes in state, which is particularly useful when combined with [lifecycle hooks](#lifecycle-hooks) and [two-way bindings](#two-way-binding).
+Este método le permite responder a cambios en el estado, que es particularmente útil cuando se combina con: [lifecycle hooks](#lifecycle-hooks) y [two-way bindings](#two-way-binding).
 
 ```js
 const observer = component.observe('answer', answer => {
@@ -80,7 +79,7 @@ component.set({ answer: 'google it' });
 observer.cancel(); // further changes will be ignored
 ```
 
-The callback takes two arguments – the current value and the previous value. (The first time it is called, the second argument will be `undefined`):
+El callback toma dos argumentos - el valor actual y el valor previo. (La primera vez que se llama, el segundo argumento sera `undefined`):
 
 ```js
 thermometer.observe('temperature', (newValue, oldValue) => {
@@ -89,7 +88,7 @@ thermometer.observe('temperature', (newValue, oldValue) => {
 });
 ```
 
-If you don't want the callback to fire when you first attach the observer, use `init: false`:
+Si usted no desea que el callback se dispare al conectar por primera vez con el observer, use `init: false`:
 
 ```js
 thermometer.observe('temperature', (newValue, oldValue) => {
@@ -97,9 +96,9 @@ thermometer.observe('temperature', (newValue, oldValue) => {
 }, { init: false });
 ```
 
-> For *primitive* values like strings and numbers, observer callbacks are only called when the value changes. But because it's possible to mutate an object or array while preserving *referential equality*, Svelte will err on the side of caution. In other words, if you do `component.set({foo: component.get('foo')})`, and `foo` is an object or array, any `foo` observers will be triggered.
+> Para valores *primitivos* como strings y numeros, los callbacks del observer se invocaran solamente cuando el valor cambie. Pero debido a que es posible mutar un objeto o array preservando la *igualdad referencial*, Svelte se equivocara en el lado de la precaución. En otras palabras, si haces `component.set({foo: component.get('foo')})`, y `foo` es un objeto o un array, cualquier observer de `foo` se activara.
 
-By default, observers are called *before* the DOM updates, giving you a chance to perform any additional updates without touching the DOM more than is necessary. In some cases – for example, if you need to measure an element after the DOM has been updated – use `defer: true`:
+Por defecto, los observers serán llamados *antes* que el DOM se actualice, dándole la posibilidad de realizar cualquier actualización adicional sin tener que tocar el DOM mas de lo necesario. En algunos casos - por ejemplo, si necesita calcular un elemento despúes de que el DOM se haya actualizado - use `defer: true`:
 
 ```js
 function redraw() {
@@ -112,7 +111,7 @@ drawingApp.observe('width', redraw, { defer: true });
 drawingApp.observe('height', redraw, { defer: true });
 ```
 
-To observe properties of a nested component, use refs:
+Para observar la propiedades de un componente anidado, use refs:
 
 ```html-no-repl
 <Widget ref:widget/>
@@ -128,7 +127,7 @@ To observe properties of a nested component, use refs:
 
 ### component.on(eventName, callback)
 
-Allows you to respond to *events*:
+Le permite responder a *eventos*:
 
 ```js
 const listener = component.on('thingHappened', event => {
@@ -142,7 +141,7 @@ listener.cancel();
 
 ### component.fire(eventName, event)
 
-The companion to `component.on(...)`:
+El acompañante de `component.on(...)`:
 
 ```js
 component.fire('thingHappened', {
@@ -150,14 +149,14 @@ component.fire('thingHappened', {
 });
 ```
 
-At first glance `component.on(...)` and `component.fire(...)` aren't particularly useful, but it'll become more so when we learn about [nested components](#nested-components).
+A primera vista `component.on(...)` y `component.fire(...)` no son particularmente útiles, pero lo serán más cuando aprendamos sobre [componentes anidados](#nested-components).
 
-> `component.on(...)` and `component.observe(...)` look quite similar, but they have different purposes. Observers are useful for reacting to data flowing through your application and changing continuously over time, whereas events are good for modeling discrete moments such as 'the user made a selection, and this is what it is'.
+> `component.on(...)` y `component.observe(...)` lucen similares, pero tienen diferentes propósitos. Los observers son útiles para reaccionar a los datos que fluyen a través de su aplicación y cambian continuamente a lo largo del tiempo, mientras que los eventos son buenos para modelar momentos discretos como 'el usuario hizo una selección y esto es lo que selecciono'.
 
 
 ### component.destroy()
 
-Removes the component from the DOM and removes any observers and event listeners that were created. This will also fire a `destroy` event:
+Elimina el componente del DOM y elimina los observers y los detectores de eventos que se crearon. Esto también dispara un evento `destroy`:
 
 ```js
 component.on('destroy', () => {
@@ -170,7 +169,7 @@ component.destroy();
 
 ### component.options
 
-The options used to instantiate the component are available in `component.options`.
+Las opciones usadas al instanciar el componente están disponibles en `component.options`.
 
 ```html
 Check the console.
@@ -184,9 +183,9 @@ Check the console.
 </script>
 ```
 
-This gives you access to standard options like `target` and `data`, but can also be used to access any other custom options you may choose to implement for your component.
+Esto le da acceso a opciones estándar como `target` y `data`, pero también se puede usar para acceder a cualquier otra opción personalizada que haya decidido implementar para su componente.
 
 
 ### component.root
 
-In [nested components](#nested-components), each component has a `root` property pointing to the top-level root component – that is, the one instantiated with `new MyComponent({ ... })`.
+En [componentes anidados](#nested-components), cada componente tiene una propiedad `root` que apunta al componente raíz de nivel superior, es decir, el instanciado con `new MyComponent({ ... })`.
