@@ -746,11 +746,11 @@ Los metodos (ya sean incorporados o personalizados) tambien se pueden llamar den
 
 ### Controladores de eventos personalizados
 
-Soon, we'll learn about [event handlers](#event-handlers) – if you want, skip ahead to that section first then come back here!
+Pronto aprenderemos sobre [manejadores de eventos](#event-handlers) - si lo desea, salte esta sección primero y luego regrese aqui!.
 
-Most of the time you can make do with the standard DOM events (the sort you'd add via `element.addEventListener`, such as `click`) but sometimes you might need custom events to handle gestures, for example.
+La mayor parte del tiempo podra arreglarselas con eventos estandares del DOM (el tipo que agregarias via `element.addEventListener`, como `click`) pero a veces puede necesitar eventos personalizados para manejar gestos, por ejemplo.
 
-Custom events are just functions that take a node and a callback as their argument, and return an object with a `teardown` method that gets called when the element is removed from the page:
+Los eventos personalizados son solo funciones que toman como argumento un nodo y un callback, y retornan un objeto con un metodo `teardown` que se llama cuando el elemento se elimina de la pagina:
 
 ```html
 <button on:longpress='set({ done: true })'>click and hold</button>
@@ -788,7 +788,8 @@ Custom events are just functions that take a node and a callback as their argume
 ```
 
 
-### Namespaces
+### Espacios de nombres
+
 
 Components are assumed to be in the HTML namespace. If your component is designed to be used inside an `<svg>` element, you need to specify the namespace:
 
