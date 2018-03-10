@@ -1,8 +1,8 @@
 ---
-title: Behaviours
+title: Comportamientos
 ---
 
-As well as scoped styles and a template, components can encapsulate *behaviours*. For that, we add a `<script>` element and export an object:
+Ademas de los ambitos de estilos y de los templates, los componentes encapsulan *comportamientos*. Para ello, necesitamos agregar una etiqueta `<script>` y exportar un objeto:
 
 ```html
 <div>
@@ -17,9 +17,9 @@ As well as scoped styles and a template, components can encapsulate *behaviours*
 ```
 
 
-### Default data
+### Datos predeterminados
 
-Often, it makes sense for a component to have default data. This should be expressed as a function that returns a plain JavaScript object:
+A menudo tiene sentido que un componente tenga datos predeterminados. Esto debe expresarse como una función que devuelva un objeto de JavaScript plano:
 
 ```html
 <p>Count: {{count}}</p>
@@ -36,7 +36,7 @@ Often, it makes sense for a component to have default data. This should be expre
 </script>
 ```
 
-Data supplied at instantiation takes priority over defaults. In other words, if we instantiated the component above like so...
+Las data suministrada en la instanciación tiene prioridad sobre los valores predeterminados. En otras palabras, si creamos una instancia del componente anterior como tal...  
 
 ```js
 const counter = new Counter({
@@ -46,16 +46,16 @@ const counter = new Counter({
 });
 ```
 
-...then `{{count}}`, or `counter.get('count')`, would initially be 99 rather than 0.
+...entonces `{{count}}`, o `counter.get('count')`, seria inicialmente 99 en lugar de 0.
 
 > The example above, like many of the examples below, uses ES2015 syntax – i.e. `data () {...}` rather than `data: function {...}`. While Svelte will generate ES5 code that runs everywhere, it *won't* convert your ES2015 code into ES5 – so if you use ES2015 and need to support older browsers, you will need an additional transpilation step in your build process, added __after__ the `svelte()` step, using [Babel](https://babeljs.io) or [Bublé](https://buble.surge.sh).
 
 
-### Computed properties
+### Propiedades calculadas
 
-Often, your program will use values that depend on other values – for example, you might have a filtered list, which depends on both the list *and* the filter. Normally in JavaScript you'd have to add logic to update the dependent property when *any* of the dependencies change. This is a frequent source of bugs, and it gets worse as your application grows.
+A menudo, su programa usara valores que dependen de otros valores - por ejemplo, es posible que tenga una lista filtrada, que dependa de ambos, la lista *y* el filtro. Normalmente en JavaScript tendrias que agregar logica para actualizar la propiedad dependiente cuando *cualquiera* de las dependencias cambien. Esta es una fuente frecuente de errores, y empeora a medida que su aplicación crece.
 
-Svelte allows you to express these dependencies in computed properties, which are recalculated whenever those dependencies change:
+Svelte le permite expresar estas dependencias en propiedades calculadas, que seran recalculadas cuando cambien esas dependencias:
 
 ```html
 <p>
