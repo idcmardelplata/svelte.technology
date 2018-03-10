@@ -48,8 +48,7 @@ const counter = new Counter({
 
 ...entonces `{{count}}`, o `counter.get('count')`, seria inicialmente 99 en lugar de 0.
 
-> The example above, like many of the examples below, uses ES2015 syntax – i.e. `data () {...}` rather than `data: function {...}`. While Svelte will generate ES5 code that runs everywhere, it *won't* convert your ES2015 code into ES5 – so if you use ES2015 and need to support older browsers, you will need an additional transpilation step in your build process, added __after__ the `svelte()` step, using [Babel](https://babeljs.io) or [Bublé](https://buble.surge.sh).
-
+> El ejemplo anterior, al igual que muchos ejemplos a continuación, usan la sintaxis de ES2015 - es decir `data () {...}` en lugar de `data: function {...}`. Mientras que Svelte generara codigo ES5 que se ejecute en todas partes, no convertira su codigo ES1015 en ES5 - por lo que si usa ES2015 y necesita soportar navegadores mas antiguos, necesitara un paso de transpilación adicional en su proceso de construccion del sitio, usando [Babel](https://babeljs.io) o [Bublé](https://buble.surge.sh)
 
 ### Propiedades calculadas
 
@@ -80,9 +79,9 @@ Svelte le permite expresar estas dependencias en propiedades calculadas, que ser
 </script>
 ```
 
-Notice that all we need to do to tell Svelte that `hours`, `minutes` and `seconds` depend on `time` is include it as a parameter to the function. There's no costly dependency tracking involved – the dependency graph is resolved at compile time.
+Tenga en cuenta que todo lo que tenemos que hacer para decirle a Svelte que `hours`, `minutes` y `seconds` son dependientes de `time` es simplemente incluirlo como parametro de la función. No hay un costoso seguimiento de dependencias involucrado - puesto que el grafico de dependencias es resulto en tiempo de compilación.
 
-> `computed` must be an object literal, and the properties must be function expressions or arrow function expressions. Any external functions used in computed must be wrapped _here_:
+> `computed` debe ser un objeto literal, y las propiedades deben ser expresiones de función o expresiones de funciones de flecha. Cualquier funcion externa utilizada en computed debera ser envuelta _aqui_:
 
 ```js
 import externalFunc from '_external_file';
@@ -93,7 +92,7 @@ export default {
 }
 ```
 
-Computed properties can of course return functions. For example, we could dynamically generate a filter function for a list of items:
+Las propiedades calculadas pueden, por supuesto devolver funciones. Por ejemplo, podriamos generar dinamicamente una función de filtro para una lista de items:
 
 ```html
 <input bind:value=search>
