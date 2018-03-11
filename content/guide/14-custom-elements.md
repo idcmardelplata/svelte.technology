@@ -88,9 +88,9 @@ export default {
 
 ### Optiones del compilador
 
-Earlier, we saw the use of `customElement: true` to instruct the Svelte compiler to generate a custom element using the `tag` and (optional) `props` declared inside the component file.
+Anteriormente vimos el uso de `customElement: true` para indicarle al compilador de Svelte que genera un elemento personalizado con la etiqueta `tag` y (opcional) `props` declarado dentro del archivo del componente.
 
-Alternatively, you can pass `tag` and `props` direct to the compiler:
+Alternativamente, puede pasar `tag` y `props` directamente al compilador:
 
 ```js
 const { code } = svelte.compile(source, {
@@ -101,10 +101,10 @@ const { code } = svelte.compile(source, {
 });
 ```
 
-These options will override the component's own settings, if any.
+Estas opciones anularan la configuración propia del componente, si corresponde.
 
-### Transpiling
+### Transpilando
 
-* Custom elements use ES2015 classes (`MyThing extends HTMLElement`). Make sure you don't transpile the custom element code to ES5, and use a ES2015-aware minifier such as [uglify-es](https://www.npmjs.com/package/uglify-es).
+* Los elementos personalizados usan clases de ES2015 (`MyThing extiende HTMLElement`). Asegurese de no transpilar el codigo del elemento personalizado a ES5, y utilice un minificador conciente de ES2015 como [uglify-es](https://www.npmjs.com/package/uglify-es).
 
-* If you do need ES5 support, make sure to use `Reflect.construct` aware transpiler plugin such as [babel-plugin-transform-builtin-classes](https://github.com/WebReflection/babel-plugin-transform-builtin-classes) and a polyfill like [custom-elements-es5-adapterjs](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs).
+* Si no necesita soporte ES5, asegurese de usar el plugin `Reflect.construct` de un transpilador conciente como [babel-plugin-transform-builtin-classes](https://github.com/WebReflection/babel-plugin-transform-builtin-classes) y un polyfill como [custom-elements-es5-adapterjs](https://github.com/webcomponents/webcomponentsjs#custom-elements-es5-adapterjs).
