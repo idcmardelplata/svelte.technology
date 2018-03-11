@@ -13,7 +13,7 @@ Svelte tiene `Store`. `Store` se puede utilizar en cualquier aplicación de Java
 
 ### Lo Básico
 
-Import `Store` from `svelte/store.js` (remember to include the curly braces, as it's a *named import*), then create a new store with some (optional) data:
+import {`Store`} from `svelte/store.js` (recuerde incluir las llaves, ya que es un *importacion nombrada* ), luego cree un nuevo store con algunos datos (opcional):
 
 ```js
 import { Store } from 'svelte/store.js';
@@ -23,7 +23,7 @@ const store = new Store({
 });
 ```
 
-Each instance of `Store` has `get`, `set` and `observe` methods that behave identically to their counterparts on a Svelte component:
+Cada instancia de `Store` tiene metodos `get`, `set` y `observe` que se comportan de manera identica a sus contrapartes en un componente Svelte:
 
 ```js
 store.get('name'); // 'world'
@@ -37,9 +37,9 @@ store.set({ name: 'everybody' }); // 'hello everybody'
 
 
 
-### Creating components with stores
+### Creando componentes con stores
 
-Let's adapt our [very first example](#understanding-svelte-components):
+Vamos a adaptar su [primer ejemplo](#understanding-svelte-components):
 
 ```html-no-repl
 <!-- App.html -->
@@ -76,15 +76,15 @@ const app = new App({
 window.store = store; // useful for debugging!
 ```
 
-There are three important things to notice:
+Aqui hay tres cosas importantes para notar:
 
-* We're passing `store` to `new App(...)` instead of `data`
-* The template refers to `$name` instead of `name`. The `$` prefix tells Svelte that `name` is a *store property*
-* Because `<Greeting>` is a child of `<App>`, it also has access to the store. Without it, `<App>` would have to pass the `name` property down as a component property (`<Greeting name='{{name}}'/>`)
+* Pasamos `store` a `new App(...)` en lugar de `data`
+* La plantilla referencia a `$name` en lugar de `name`. El prefijo `$` le dice a Svelte que `name` es una *propiedad del store*
+* Puesto que `<Greeting>` es hijo de  `<App>`, tambien tiene acceso al store. Sin ello, `<App>` tendria que pasar la propiedad `name` como propiedad del componente  (`<Greeting name='{{name}}'/>`)
 
-Components that depend on store properties will re-render whenever they change.
+Los componentes que dependen de las propiedades del store se volveran a renderizar siempre que cambien.
 
-> To tell Svelte that you're going to be using `Store`, you must pass the `store: true` compiler option. This will change in version 2, when the compiler will automatically generate store-aware components.
+> Para decirle a Svelte que va a estar usando `Store`, debe configurar la opción del compilador `store: true`. Esto cambiara en la versión 2, cuando el compilador generara automaticamente componentes compatibles con el store.
 
 
 ### Declarative stores
