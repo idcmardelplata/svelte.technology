@@ -1,15 +1,16 @@
 ---
-title: Custom elements
+title: Elementos personalizados
 ---
 
-[Custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) are an emerging web standard for creating DOM elements that encapsulate styles and behaviours, much like Svelte components. They are part of the [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) family of specifications.
+[Custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) son un estandar web emergente para crear elementos DOM que encapsulan estilos y comportamientos, similar a los componentes de Svelte. Ellos son parte de  la familia de especificaciones de [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
-> Most browsers need [polyfills](https://www.webcomponents.org/polyfills) for custom elements. See [caniuse](https://caniuse.com/#feat=custom-elementsv1) for more details
+> La mayoria de los navegadores necesitan [polyfills](https://www.webcomponents.org/polyfills) para elementos personalizados. Vea  [caniuse](https://caniuse.com/#feat=custom-elementsv1) para mas detalles.
 
-Svelte components can be used as custom elements by doing the following:
+Los componentes de Svelte pueden ser usados como elementos personalizados haciendo lo siguiente:
 
-1. Declaring a `tag` name. The value must contain a hyphen (`hello-world` in the example below)
-2. Specifying `customElement: true` in the compiler configuration
+1. Declarando un nombre de etiqueta. El valor debe contener un guion  (`hello-world` en el ejemplo siguiente)
+2. Especificando `customElement: true` en la configuración del compilador.
+
 
 ```html-no-repl
 <!-- HelloWorld.html -->
@@ -22,7 +23,7 @@ Svelte components can be used as custom elements by doing the following:
 </script>
 ```
 
-Importing this file will now register a globally-available `<hello-world>` custom element that accepts a `name` property:
+Importando este archivo se registrara globalmente el elemento personalizado `<hello-world>` que acepta una propiedad `name`: 
 
 ```js
 import './HelloWorld.html';
@@ -32,7 +33,7 @@ const el = document.querySelector('hello-world');
 el.name = 'everybody';
 ```
 
-See [svelte-custom-elements.surge.sh](http://svelte-custom-elements.surge.sh/) ([source here](https://github.com/sveltejs/template-custom-element)) for a larger example.
+Vea [svelte-custom-elements.surge.sh](http://svelte-custom-elements.surge.sh/) ([codigo fuente aqui](https://github.com/sveltejs/template-custom-element)) para un ejemplo mas grande.
 
 The compiled custom elements are still full-fledged Svelte components and can be used as such:
 
