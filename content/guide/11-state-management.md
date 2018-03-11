@@ -291,7 +291,7 @@ store.set({ bar: 3, baz: 3, qux: 3 });
 // -> 'These properties changed: bar, qux'
 ```
 
-This is useful for attaching generic behaviours to stores — for example, you could create a function that persisted the contents of a store to `localStorage`:
+Esto es útil para adjuntar comportamiento generico al store - por ejemplo, podria crear una función que persistiera el contenido del store en el `localStorage`:
 
 ```js
 function useLocalStorage(store, key) {
@@ -308,7 +308,7 @@ function useLocalStorage(store, key) {
 useLocalStorage(store, 'my-key');
 ```
 
-Note that `Store` is conservative about objects and arrays, because there is no easy way to know if they have been mutated:
+Note que `Store` es conservador en cuanto a objetos y arrays, porque no hay una manera facíl de saber si han sido mutados:
 
 ```js
 const object = {};
@@ -320,7 +320,6 @@ store.set({ object }); // 'something changed' (even though it's the same value)
 ```
 
 
-### Built-in optimisations
+### Optimizaciónes incorporadas
 
-The Svelte compiler knows which store properties your components are interested in (because of the `$` prefix), and writes code that only listens for changes to those properties. Because of that, you needn't worry about having many properties on your store, even ones that update frequently — components that don't use them will be unaffected.
-
+El compilador de Svelte, sabe en que propiedades del store estan interesados sus componentes (debido al prefijo `$`), y escribe código que que solo escucha los cambios en esas propiedades.  Por eso, no debe preocuparse si tiene muchas propiedades en su store, incluso las que se actualizan con frecuencia - los componentes que no los usan, no se veran afectados.
