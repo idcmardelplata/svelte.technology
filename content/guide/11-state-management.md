@@ -243,17 +243,16 @@ Puede llamar a estos metodos en sus componentes, como si fueran los metodos inte
 
 ### Two-way store bindings
 
-You can bind to store properties just like you bind to component properties — just add the `$` prefix:
+Puede vincular a las propiedades del store al igual que hace con las propiedades de los componentes - solo agregue el prefijo `$`:
 
 ```html-no-repl
 <!-- global audio volume control -->
 <input bind:value=$volume type=range min=0 max=1 step=0.01>
 ```
 
+### Usar propiedades del store en propiedades calculadas
 
-### Using store properties in computed properties
-
-Just as in templates, you can access store properties in component computed properties by prefixing them with `$`:
+Al igual que en las plantillas, puede acceder a las propiedades del store en las propiedades calculadas agregando el prefijo `$`:
 
 ```html-no-repl
 <!-- Todo.html -->
@@ -278,10 +277,9 @@ Just as in templates, you can access store properties in component computed prop
 </script>
 ```
 
+### El metodo onchange
 
-### The onchange method
-
-In addition to `get`, `set`, `observe` and `compute`, each `Store` instance also has an `onchange` method. Every time the state changes, callbacks will receive a copy of the state, and an object indicating which properties have changed:
+Ademas de `get`, `set`, `observe` y `compute`, cada instancia de `Store` tiene tambien un metodo `onchange`. Cada vez que el estado cambia, los callbacks recibiran una copia del estado junto con un objeto que indica que propiedades han cambiado:
 
 ```js
 store.set({ foo: 1, bar: 2, baz: 3, qux: 4 });
