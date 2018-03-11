@@ -308,7 +308,7 @@ Si el atributo y la propiedad enlazada comparten un nombre, puede usar este shor
 <CategoryChooser bind:category/>
 ```
 
-Here is a complete example of using two way bindings with a form:
+Aqui hay un ejemplo completo del uso de enlaces bidireccionales con un formulario:
 
 ```html
 <form on:submit='handleSubmit( event )'>
@@ -331,4 +331,4 @@ export default {
 </script>
 ```
 
-> Do not confuse the `<Widget bind:foo/>` syntax (two-way binding) with the `<Widget :foo/>` syntax (one-way binding)
+> No confunda la sintaxis de `<Widget bind:foo/>` (two-way binding) con la sintaxis de `<Widget :foo/>` (one-way binding)
