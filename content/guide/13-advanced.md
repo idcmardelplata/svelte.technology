@@ -71,9 +71,9 @@ Es mas facil mostrar el efecto de esto que describirlo. Habra el siguiente ejemp
 ```
 
 
-### Hydration
+### Hidratación
 
-If you're using [server-side rendering](#server-side-rendering), it's likely that you'll need to create a client-side version of your app *on top of* the server-rendered version. A naive way to do that would involve removing all the existing DOM and rendering the client-side app in its place:
+Si esta usando [server-side rendering](#server-side-rendering), es probable que deba crear una version del lado del cliente de la aplicación *encima de* la versión procesada por el servidor. Una forma ingenua de hacerlo seria eliminar todo el DOM existente y renderizar la aplicación en el lado del cliente:
 
 ```js
 import App from './App.html';
@@ -87,7 +87,7 @@ new App({
 });
 ```
 
-Ideally, we want to reuse the existing DOM instead. This process is called *hydration*. First, we need to tell the compiler to include the code necessary for hydration to work by passing the `hydratable: true` option:
+Idealmente queremos reusar el DOM existente en su lugar. Este proceso se llama *hydration*. Primero, necesitamos decirle al compilador que incluya el código necesario para que la hidratación funcióne pasando la opcion `hydratable: true`:
 
 ```js
 const { code } = svelte.compile(source, {
@@ -95,9 +95,10 @@ const { code } = svelte.compile(source, {
 });
 ```
 
-(Most likely, you'll be passing this option to [rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) or [svelte-loader](https://github.com/sveltejs/svelte-loader).)
+(Lo mas probable es que pase esta opción al [rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) o al [svelte-loader](https://github.com/sveltejs/svelte-loader).)
 
-Then, when we instantiate the client-side component, we tell it to use the existing DOM with `hydrate: true`:
+
+Entonces, cuando instanciamos el componente en el lado del cliente, le decimos que use el DOM existente con `hydrate: true`: 
 
 ```js
 import App from './App.html';
@@ -110,4 +111,4 @@ new App({
 });
 ```
 
-> It doesn't matter if the client-side app doesn't perfectly match the server-rendered HTML — Svelte will repair the DOM as it goes.
+> No importa si la aplicación del lado del cliente no coincide perfectamente con el HTML procesado por el servidor - Svelte reparara el DOM como va.
