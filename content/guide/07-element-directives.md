@@ -243,9 +243,9 @@ Las transiciones son funciones simples que toman un `nodo` y cualquier `parametr
 * `delay` — milisegundos antes de que la transición comiense.
 * `easing` — una [easing function](https://github.com/rollup/eases-jsnext)
 * `css` — una función que acepta un argumento `t` entre `0` y `1`y retorna  los estilos que deberian aplicarse en ese momento
-* `tick` — a function that will be called on every frame, with the same `t` argument, while the transition is in progress
+* `tick` — una función que se llamara en cada frame, con el mismo argumento `t`, mientras que la transicion esta en progreso
 
-Of these, `duration` is required, as is *either* `css` or `tick`. The rest are optional. Here's how the `fade` transition is implemented, for example:
+De estos, se require `duration`, como `css` oo `tick`. El resto es opcional. Asi es como se implementa la transición `fade` por ejemplo:
 
 ```html
 <input type='checkbox' bind:checked=visible> visible
@@ -271,10 +271,10 @@ Of these, `duration` is required, as is *either* `css` or `tick`. The rest are o
 </script>
 ```
 
-> If the `css` option is used, Svelte will create a CSS animation that runs efficiently off the main thread. Therefore if you can achieve an effect using `css` rather than `tick`, you should.
+> Si se usa la opción `css`, Svelte creara una animación css que se ejecutara de manera eficiente fuera del thread principal. Por lo tanto, si puede lograr un efecto usando `css` en lugar de `tick` deberia hacerlo.
 
 
-### Two-way binding
+### Enlace bidireccional
 
 It's currently fashionable to avoid two-way binding on the grounds that it creates all sorts of hard-to-debug problems and slows your application down, and that a one-way top-down data flow is 'easier to reason about'. This is in fact high grade nonsense. It's true that two-way binding done *badly* has all sorts of issues, and that very large apps benefit from the discipline of a not permitting deeply nested components to muck about with state that might affect distant parts of the app. But when used correctly, two-way binding simplifies things greatly.
 
