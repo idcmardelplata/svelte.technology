@@ -50,7 +50,7 @@ Los elementos personalizados pueden usar [slots](#composing-with-slot-) para col
 
 ### Disparando eventos
 
-Puede enviar eventos dentro de elementos personalizados para pasar daros:
+Puede enviar eventos dentro de elementos personalizados para pasar datos:
 
 ```js
 // inside a component method
@@ -64,7 +64,7 @@ const event = new CustomEvent('message', {
 this.dispatchEvent(event);
 ```
 
-Other parts of the application can listen for these events with `addEventListener`:
+Otras partes de la aplicación pueden escuchar estos eventos con `addEventListener`:
 
 ```js
 const el = document.querySelector('hello-world');
@@ -73,11 +73,11 @@ el.addEventListener('message', event => {
 });
 ```
 
-> Note the `composed: true` attribute of the custom event. It enables the custom DOM event to cross the shadow DOM boundary and enter into main DOM tree.
+> Tenga en cuenta el atributo `composed: true` del evento personalizado. Permite que el evento DOM personalizado atraviese el limite del shadow DOM y entre en el arbol del DOM principal.
 
-### Observing properties
+### Observando propiedades
 
-Svelte will determine, from the template and `computed` values, which properties the custom element has — for example, `name` in our `<hello-world>` example. You can specify this list of properties manually, for example to restrict which properties are 'visible' to the rest of your app:
+Svelte determinara, de la plantilla y los valores `computados`, que propiedades tiene el elemento personalizado - por ejemplo, `name` en nuestro `<hello-world>` de ejemplo. Puede especificar esta lista de propiedades manualmente, por ejemplo para restringir que propiedades son 'visibles' para el resto de su aplicación:
 
 ```js
 export default {
@@ -86,7 +86,7 @@ export default {
 };
 ```
 
-### Compiler options
+### Optiones del compilador
 
 Earlier, we saw the use of `customElement: true` to instruct the Svelte compiler to generate a custom element using the `tag` and (optional) `props` declared inside the component file.
 
