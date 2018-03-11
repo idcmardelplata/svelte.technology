@@ -35,22 +35,22 @@ el.name = 'everybody';
 
 Vea [svelte-custom-elements.surge.sh](http://svelte-custom-elements.surge.sh/) ([codigo fuente aqui](https://github.com/sveltejs/template-custom-element)) para un ejemplo mas grande.
 
-The compiled custom elements are still full-fledged Svelte components and can be used as such:
+Los elementos personalizados compilados siguen siendo componentes Svelte de pleno derecho y se pueden usar como tales:
 
 ```js
 el.get('name') === el.name; // true
 el.set({ name: 'folks' }); // equivalent to el.name = 'folks'
 ```
 
-One crucial difference is that styles are *fully encapsulated* — whereas Svelte will prevent component styles from leaking *out*, custom elements use [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM) which also prevents styles from leaking *in*.
+Una diferencia crucial es que los estilos estan *completamente encapsulados* - mientras que Svelte evitara que los estilos de los componentes se filtren *fuera*, los elementos personalizados utilizan [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM) que tambien evita fugas en los estilos.
 
-### Using `<slot>`
+### Usando `<slot>`
 
-Custom elements can use [slots](#composing-with-slot-) to place child elements, just like regular Svelte components.
+Los elementos personalizados pueden usar [slots](#composing-with-slot-) para colocar elementos secundarios, al igual que los componentes regulares de Svelte.
 
-### Firing events
+### Disparando eventos
 
-You can dispatch events inside custom elements to pass data out:
+Puede enviar eventos dentro de elementos personalizados para pasar daros:
 
 ```js
 // inside a component method
