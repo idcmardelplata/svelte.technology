@@ -276,16 +276,18 @@ De estos, se require `duration`, como `css` oo `tick`. El resto es opcional. Asi
 
 ### Enlace bidireccional
 
-It's currently fashionable to avoid two-way binding on the grounds that it creates all sorts of hard-to-debug problems and slows your application down, and that a one-way top-down data flow is 'easier to reason about'. This is in fact high grade nonsense. It's true that two-way binding done *badly* has all sorts of issues, and that very large apps benefit from the discipline of a not permitting deeply nested components to muck about with state that might affect distant parts of the app. But when used correctly, two-way binding simplifies things greatly.
+Actualmente esta de moda evitar el enlace bidireccional porque crea todo tipo de problemas dificiles de depurar y relentiza la aplicación, ademas de que un flujo de datos decendente de ida es 'mas facil de razonar'. De echo esto es una gran tonteria. Si bien es cierto que el enlace bidireccional *mal echo* tiene todo tipo de problemas, y que las aplicaciónes muy grandes se benefician de la disciplina de no permitir que los componentes profundamente anidados se ensucien con el estado pudiendo asi afectar a partes distantes de la aplicación.
+Pero cuando se usa correctamente, el two-wey binding simplifica mucho las cosas.
 
-Bindings are declared with the `bind:[attribute]` directive:
+
+Los enlaces se declaran con la directiva `bind:[attribute]`:
 
 ```html
 <input bind:value='name' placeholder='enter your name'>
 <p>Hello {{name || 'stranger'}}!</p>
 ```
 
-Here are the current bindable attributes and properties for each element:
+Aqui estan los atributos y las propiedades enlazables actuales para cada elemento:
 
 - `<input>`, `<textarea>`, `<select>`, `<option>`
 	- `value`
@@ -294,13 +296,13 @@ Here are the current bindable attributes and properties for each element:
 - `<audio>`, `<video>`
 	- `buffered`, `currentTime`, `duration`, `paused`, `played`, `seekable`, `volume`
 
-As well as DOM elements, you can bind to component data properties:
+Ademas de los elementos DOM, puede enlazar a propiedades de datos de componentes:
 
 ```html-no-repl
 <CategoryChooser bind:category='category'/>
 ```
 
-If the attribute and the bound property share a name, you can use this shorthand:
+Si el atributo y la propiedad enlazada comparten un nombre, puede usar este shorthand: 
 
 ```html-no-repl
 <CategoryChooser bind:category/>
