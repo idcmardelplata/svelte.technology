@@ -1,17 +1,17 @@
 ---
-title: State management
+title: Manejo del estado
 ---
 
-Svelte components have built-in state management via the `get`, `set` and `observe` methods. But as your application grows beyond a certain size, you may find that passing data between components becomes laborious.
+Los componentes de Svelte tienen una administracion de estado incorporada mediante los metodos `get`, `set` y `observe`. Pero a medida que su aplicación crece más alla de un cierto tamaño, puede encontrar que pasar los datos entre los componentes se vuelve una tarea laboriosa.
 
-For example, you might have an `<Options>` component inside a `<Sidebar>` component that allows the user to control the behaviour of a `<MainView>` component. You could use bindings or events to 'send' information up from `<Options>` through `<Sidebar>` to a common ancestor — say `<App>` — which would then have the responsibility of sending it back down to `<MainView>`. But that's cumbersome, especially if you decide you want to break `<MainView>` up into a set of smaller components.
+Por ejemplo, es posible que tenga un componente `<Options>` dentro de un componente `<Sidebar>` que le permite al usuario controlar el comportamiento de un componente `<MainView>`. Podria usar bindings o eventos para 'enviar' información desde `<Options>` mediante `<Sidebar>` a un antecesor común digamos `<App>` - que luego tendria la responsabilidad de enviarlo a `<MainView>`. Pero eso es engorroso, especialmente si decides que quieres romper `<MainView>` en un puñado de componentes mas pequeños
 
-Instead, a popular solution to this problem is to use a *global store* of data that cuts across your component hierarchy. React has [Redux](https://redux.js.org/) and [MobX](https://mobx.js.org/index.html) (though these libraries can be used anywhere, including with Svelte), and Vue has [Vuex](https://vuex.vuejs.org/en/).
+En cambio, una solución popular a este problema es usar un *almacen global* de datos que atraviesa la jerarquia de los componentes. 
+React tiene [Redux](https://redux.js.org/) y [MobX](https://mobx.js.org/index.html) ( aunque esas librerias se pueden usar en cualquier lugar, incluso en Svelte), y Vue tiene [Vuex](https://vuex.vuejs.org/en/).
 
-Svelte has `Store`. `Store` can be used in any JavaScript app, but it's particularly well-suited to Svelte apps.
+Svelte tiene `Store`. `Store` se puede utilizar en cualquier aplicación de JavaScript, pero es particularmente adecuado para las aplicaciónes de Svelte.
 
-
-### The basics
+### Lo Básico
 
 Import `Store` from `svelte/store.js` (remember to include the curly braces, as it's a *named import*), then create a new store with some (optional) data:
 
