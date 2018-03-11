@@ -52,17 +52,18 @@ const data = { answer: 42 };
 const { html, css, head } = Thing.render(data);
 ```
 
-All your [default data](#default-data), [computed properties](#computed-properties), [helpers](#helpers) and [nested components](#nested-components) will work as expected.
+Todos sus [default data](#default-data),[computed properties](#computed-properties), [helpers](#helpers) y [nested components](#nested-components) funcionaran como espera.
 
-Any `oncreate` functions or component methods will *not* run — these only apply to client-side components.
+Cualquier función `oncreate` o metodos de componente *no* se ejecutara - puesto que estos solo se aplican a los componentes del lado del cliente.
 
-> The SSR compiler will generate a CommonJS module for each of your components – meaning that `import` and `export` statements are converted into their `require` and `module.exports` equivalents. If your components have non-component dependencies, they must also work as CommonJS modules in Node. If you're using ES2015 modules, we recommend [@std/esm](https://github.com/standard-things/esm) for automatically converting them to CommonJS.
+> El compilador SSR generara un modulo CommonJS para cada uno de sus componentes - lo que significa que las intrucciónes `import` y `export` se convertiran en sus equivalentes `require` y `module.exports`. Si sus componentens no tienen dependencias de otros componentes, tambien pueden funcionar como modulos CommonJS en Node. Si esta usando modulos ES2015, le recomendamos [@std/esm](https://github.com/standard-things/esm) para convertirlos automaticamente a CommonJS.
 
 
 
-#### Using stores
+#### Usando Stores
 
-If your components use [stores](#state-management), use the second argument:
+Si sus componentes usan [stores](#state-management), use el segundo argumento:
+
 
 ```js
 const { Store } = require('svelte/store.umd.js');
@@ -75,7 +76,7 @@ const { html } = Thing.render(data, {
 ```
 
 
-#### Rendering styles
+#### Renderizando estilos
 
 You can also extract any [scoped styles](#scoped-styles) that are used by the component or its children:
 
