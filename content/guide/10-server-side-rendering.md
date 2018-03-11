@@ -2,12 +2,12 @@
 title: Server-side rendering
 ---
 
-So far, we've discussed creating Svelte components *on the client*, which is to say the browser. But you can also render Svelte components in Node.js. This can result in better perceived performance as it means the application starts rendering while the page is still downloading, before any JavaScript executes. It also has SEO advantages in some cases, and can be beneficial for people running older browsers that can't or won't run your JavaScript for whatever reason.
+Hasta aquí, hemos discutido la creación de componentes de Svelte *en el cliente*, es decir en el navegador. Pero también puede renderizar componentes Svelte en Node.js. Esto puede dar como resultado una mejor percepción del rendimiento, ya que significa que la aplicación comienza a renderizarse mientras la página aún se esta descargando, antes de que se ejecute JavaScript. Tambien tiene ventajas de SEO en algunos casos, y puede ser beneficioso para las personas que utilizan navegadores antiguos que no pueden o no ejecutan su codigo javascript por el motivo que sea.
 
 
-### Using the compiler
+### Usando el compilador.
 
-If you're using the Svelte compiler, whether directly or via an integration like [rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) or [svelte-loader](https://github.com/sveltejs/svelte-loader), you can tell it to generate a server-side component by passing the `generate: 'ssr'` option:
+Si esta usando el compilador de Svelte, ya sea directamente o a trabes de una itegración como: rollup-plugin-svelte](https://github.com/rollup/rollup-plugin-svelte) o [svelte-loader](https://github.com/sveltejs/svelte-loader), puede decirle a Svelte que genere un componente del lado del servidor pasando la opción `generate: 'ssr'`al compilador:
 
 ```js
 const { code } = svelte.compile(source, {
@@ -16,15 +16,15 @@ const { code } = svelte.compile(source, {
 ```
 
 
-### Registering Svelte
+### Registrando Svelte
 
-Alternatively, an easy way to use the server-side renderer is to *register* it:
+Alternativamente, una forma facíl de usar ssr es *registrandolo*:
 
 ```js
 require('svelte/ssr/register');
 ```
 
-Now you can `require` your components:
+Ahora puede *requerir* sus componentes:
 
 ```js
 const Thing = require('./components/Thing.html');
