@@ -78,19 +78,18 @@ const { html } = Thing.render(data, {
 
 #### Renderizando estilos
 
-You can also extract any [scoped styles](#scoped-styles) that are used by the component or its children:
+Tambien puede extraer cualquier [scoped styles](#scoped-styles) que se utilicen por el componente o sus hijos:
 
 ```js
 const { css } = Thing.render(data);
 ```
 
-You could put the resulting `css` in a separate stylesheet, or include them in the page inside a `<style>` tag. If you do this, you will probably want to prevent the client-side compiler from including the CSS again. For `svelte-cli`, use the `--no-css` flag. In build tool integrations like `rollup-plugin-svelte`, pass the `css: false` option.
+Podria poner el `css` resultante en una hoja de estilo separada, o incluirlos en la pagina dentro de un tag `<style>`. Si hace esto, probablemente desee evitar que el compilador del lado del cliente vuelva a incluir el CSS. Para  `svelte-cli`, use el flag `no-css`. En integraciones de bundlers como `rollup-plugin-svelte`, pase la opción `css: false`
 
 
+#### Renderizando el contenido de `<head>`
 
-#### Rendering `<head>` contents
-
-If your component, any of its children, use the `<:Head>` [component](#-head-tags), you can extract the contents:
+Si su componente o cualquiera de sus hijos, usa el componente `<:Head>` [component](#-head-tags), puede extraer los contenidos:
 
 ```js
 const { head } = Thing.render(data);
