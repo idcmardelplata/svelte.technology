@@ -1,11 +1,11 @@
 ---
-title: Advanced
+title: Avanzado
 ---
 
 
 ### Keyed each blocks
 
-Associating a *key* with a block allows Svelte to be smarter about how it adds and removes items to and from a list. To do so, add `@key` to the end of the opening tag for the each block, where `key` is some property that uniquely identifies each member of the list:
+Asociar una *clave* con un bloque le permite a Svelte ser mas inteligente sobre como agrega y quita elementos hacia y desde una lista. Para acerlo, agregue `@key` hasta el final de la etiqueta de apertura para cada bloque, donde `key` es una propiedad que identifica de manera unica a cada miembro de la lista:
 
 ```html-no-repl
 {{#each people as person @name}}
@@ -13,7 +13,7 @@ Associating a *key* with a block allows Svelte to be smarter about how it adds a
 {{/each}}
 ```
 
-It's easier to show the effect of this than to describe it. Open the following example in the REPL:
+Es mas facil mostrar el efecto de esto que describirlo. Habra el siguiente ejemplo de esto en el REPL:
 
 ```html
 <button on:click='update()'>update</button>
