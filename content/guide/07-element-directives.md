@@ -73,11 +73,12 @@ El nodo de destino puede ser referenciado como `this`, lo que significa que pued
 
 ### Eventos personalizados
 
-You can define your own custom events to handle complex user interactions like dragging and swiping. See the earlier section on [custom event handlers](#custom-event-handlers) for more information.
+Usted puede definir sus propios eventos personalizados para manejar interacciónes de usuario complejas tales como drag and drop o arrastrar y deslizar. Consulte la sección anterior en [manejadores de eventos personalizados](#custom-event-handlers) para mas información.
 
-### Component events
 
-Events are an excellent way for [nested components](#nested-components) to communicate with their parents. Let's revisit our earlier example, but turn it into a `<CategoryChooser>` component:
+### Eventos de componente
+
+Los eventos son una exelente manera de que los [componentes anidados](#nested-components) se comuniquen con sus padres. Revisemos nuestro ejemplo anterior, pero convertido en un componente llamado `<CategoryChooser>`:
 
 ```html-no-repl
 <!-- CategoryChooser.html -->
@@ -102,7 +103,7 @@ Events are an excellent way for [nested components](#nested-components) to commu
 </script>
 ```
 
-When the user clicks a button, the component will fire a `select` event, where the `event` object has a `category` property. Any component that nests `<CategoryChooser>` can listen for events like so:
+Cuando el usuario hace click en el boton, el componente disparara un evento llamado `select`, donde el objeto `event` tiene una propiedad `category`. Cualquier componente que anida `<CategoryChooser>` puede escuchar eventos como este:
 
 ```html-no-repl
 <CategoryChooser on:select='playTwentyQuestions(event.category)'/>
