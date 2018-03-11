@@ -30,7 +30,7 @@ Ahora puede *requerir* sus componentes:
 const Thing = require('./components/Thing.html');
 ```
 
-If you prefer to use a different file extension, or need to use [stores](#state-management), you can pass options like so:
+Si prefiere usar una extensión de archivo diferente, o necesita usar [stores](#state-management), puede pasar opciónes como:
 
 ```js
 require('svelte/ssr/register')({
@@ -42,7 +42,7 @@ require('svelte/ssr/register')({
 
 ### Server-side API
 
-Components have a different API in Node.js – rather than creating instances with `set(...)` and `get(...)` methods, a component is an object with a `render(data, options)` method:
+Los componentes tienen una API diferente en Node.js - en lugar de crear instancias con los metodos `set(...)` y `get(...)`, un componente es un objeto con un metodo  `render(data, options)`:
 
 ```js
 require('svelte/ssr/register');
