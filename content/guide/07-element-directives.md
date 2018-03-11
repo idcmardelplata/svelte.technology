@@ -1,12 +1,12 @@
 ---
-title: Element directives
+title: Directivas de elementos
 ---
 
-Directives are element or component-level instructions to Svelte. They look like attributes, except with a `:` character.
+Las directivas son instrucciónes a nivel de elemento o componente para Svelte. Se ven como atributos, excepto por el caracter `:`.
 
-### Event handlers
+### Manejadores de eventos
 
-In most applications, you'll need to respond to the user's actions. In Svelte, this is done with the `on:[event]` directive.
+En la mayoria de las aplicaciónes, debera responder a las acciónes del usuario. En Svelte, esto se hace con la directiva `on:[event]`.
 
 ```html
 <p>Count: {{count}}</p>
@@ -19,7 +19,7 @@ In most applications, you'll need to respond to the user's actions. In Svelte, t
 }
 ```
 
-When the user clicks the button, Svelte calls `component.set(...)` with the provided arguments. You can call any method belonging to the component (whether [built-in](#component-api) or [custom](#custom-methods)), and any data property (or computed property) that's in scope:
+Cuando el usuario hace click en el boton, Svelte llama a `component.set(...)`  con los argumentos proporcionados. Puede llamar a cualquier metodo que pertenezca al componente (ya sea [built-in](#component-api) o [personalizado](#custom-methods)), y cualquier propiedad de datos (o propiedad computada) que este dentro del scope:
 
 ```html
 <p>Select a category:</p>
@@ -49,7 +49,7 @@ When the user clicks the button, Svelte calls `component.set(...)` with the prov
 </script>
 ```
 
-You can also access the `event` object in the method call:
+Tambien puede acceder al objeto `event` en la llamada al metodo:
 
 ```html
 <div on:mousemove='set({ x: event.clientX, y: event.clientY })'>
@@ -65,13 +65,13 @@ You can also access the `event` object in the method call:
 </style>
 ```
 
-The target node can be referenced as `this`, meaning you can do this sort of thing:
+El nodo de destino puede ser referenciado como `this`, lo que significa que puede hacer este tipo de cosas:
 
 ```html
 <input on:focus='this.select()' value='click to select'>
 ```
 
-### Custom events
+### Eventos personalizados
 
 You can define your own custom events to handle complex user interactions like dragging and swiping. See the earlier section on [custom event handlers](#custom-event-handlers) for more information.
 
