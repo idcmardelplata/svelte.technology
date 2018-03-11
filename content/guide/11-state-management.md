@@ -87,9 +87,9 @@ Los componentes que dependen de las propiedades del store se volveran a renderiz
 > Para decirle a Svelte que va a estar usando `Store`, debe configurar la opción del compilador `store: true`. Esto cambiara en la versión 2, cuando el compilador generara automaticamente componentes compatibles con el store.
 
 
-### Declarative stores
+### stores declarativos
 
-As an alternative to adding the `store` option when instantiating, the component itself can declare a dependency on a store:
+Como una alternativa a agregar la opcion `store` al crear la instancia, el componente en si mismo puede declarar una dependencia a un store:
 
 ```html
 <!-- App.html -->
@@ -107,12 +107,12 @@ As an alternative to adding the `store` option when instantiating, the component
 </script>
 ```
 
-Note that the `store` option is a function that *returns* a store, rather than the store itself — this provides greater flexibility.
+Tenga en cuenta que la opción `store` es una funcion que *retorna* un store, en lugar del store en si mismo - esto proporciona una mayor flexibilidad.
 
 
 ### Computed store properties
 
-Just like components, stores can have computed properties:
+Al igual que los componentes, los stores pueden tener propiedades calculadas:
 
 ```js
 store = new Store({
@@ -141,13 +141,12 @@ store.compute(
 
 store.get('mass'); // 6000
 ```
+El primer argumento es el nombre de la propiedad calculada. El segundo es un array de *dependencias* - estas pueden ser propiedades de datos u otras propiedades calculadas. El tercer argumento es una funcion que recalcula el valor cada vez que cambian las dependencias.
 
-The first argument is the name of the computed property. The second is an array of *dependencies* — these can be data properties or other computed properties. The third argument is a function that recomputes the value whenever the dependencies change.
-
-A component that was connected to this store could reference `{{$volume}}` and `{{$mass}}`, just like any other store property.
+Un componente que estaba conectado a este store podria hacer referencia a `{{$volume}}` y a `{{$mass}}`, como a cualquier otra propiedad del store.
 
 
-### Accessing the store inside components
+### Accediendo al store dentro de los componentes
 
 Each component gets a reference to `this.store`. This allows you to attach behaviours in `oncreate`...
 
