@@ -148,7 +148,7 @@ Un componente que estaba conectado a este store podria hacer referencia a `{{$vo
 
 ### Accediendo al store dentro de los componentes
 
-Each component gets a reference to `this.store`. This allows you to attach behaviours in `oncreate`...
+Cada componente cuenta con una referencia a `this.store`. Esto le permite adjuntar comportamientos en `oncreate`...
 
 ```html-no-repl
 <script>
@@ -162,7 +162,7 @@ Each component gets a reference to `this.store`. This allows you to attach behav
 </script>
 ```
 
-...or call store methods in your event handlers:
+...o llamar a los metodos del store en sus controladores de eventos:
 
 ```html-no-repl
 <button on:click='store.set({ muted: true })'>
@@ -171,11 +171,11 @@ Each component gets a reference to `this.store`. This allows you to attach behav
 ```
 
 
-### Custom store methods
+### Metodos del store personalizados
 
-`Store` doesn't have a concept of *actions* or *commits*, like Redux and Vuex. Instead, state is always updated with `store.set(...)`.
+`Store` no tiene un concepto de *actions* o *commits*, como pasa con Redux y Vuex. En su lugar, state siempre se actualiza con `store.set(...)`.
 
-You can implement custom logic by subclassing `Store`:
+Puede implementar logica personalizada derivando una clase de `Store`:
 
 ```js
 class TodoStore extends Store {
@@ -214,7 +214,7 @@ const store = new TodoStore({
 store.addTodo('Finish writing this documentation');
 ```
 
-Methods can update the store asynchronously:
+Los metodos pueden actualizar la tienda de forma asincrona:
 
 ```js
 class NasdaqTracker extends Store {
@@ -231,7 +231,7 @@ const store = new NasdaqTracker();
 store.fetchStockPrices('AMZN');
 ```
 
-You can call these methods in your components, just like the built-in methods:
+Puede llamar a estos metodos en sus componentes, como si fueran los metodos integrados:
 
 
 ```html-no-repl
