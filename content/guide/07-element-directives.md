@@ -125,14 +125,14 @@ Cuando el usuario hace click en el boton, el componente disparara un evento llam
 </script>
 ```
 
-Just as `this` in an element's event handler refers to the element itself, in a component event handler `this` refers to the component firing the event.
+Asi como `this` en el controlador de eventos de un elemento se refiere al elemento mismo, en un controlador de eventos de componente `this` hace referencia al componente que disparo el evento.
 
-There is also shorthand for listening for and re-firing an event unchanged. `<Widget on:foo/>` is equivalent to `<Widget on:foo="fire('foo', event)"/>`. Since component events do not propagate as DOM events do, this can be used to pass events through intermediate components.
+Tambien existe una forma abreviada de escuchar y volver a disparar un evento sin cambios. `<Widget on:foo/>` es equivalente a `<Widget on:foo="fire('foo', event)"/>`. Dado que los eventos de los componentes no se propagan como eventos DOM, esto se puede usar para pasar eventos a trabes de componentes intermedios.
 
 
 ### Refs
 
-Refs are a convenient way to store a reference to particular DOM nodes or components. Declare a ref with `ref:[name]`, and access it inside your component's methods with `this.refs.[name]`:
+Los Refs son una forma conveniente de almacenar una referencia a determinados nodos del DOM o a componentes. Declare un ref con `ref:[name]`, y acceda a ella dentro de los metodos de su componente con `this.refs.[name]`:
 
 ```html
 <canvas ref:canvas width='200' height='200'></canvas>
@@ -178,12 +178,12 @@ Refs are a convenient way to store a reference to particular DOM nodes or compon
 </script>
 ```
 
-> Since only one element or component can occupy a given `ref`, don't use them in `{{#each ...}}` blocks. It's fine to use them in `{{#if ...}}` blocks however.
+> Dado que solo un elemento o un componente puede ocupar un `ref` especificado, no los use en bloques `{{#each ...}}`. Sin embargo, esta bien usarlos en bloques `{{#if ...}}`.
 
 
-### Transitions
+### Transiciones
 
-Transitions allow elements to enter and leave the DOM gracefully, rather than suddenly appearing and disappearing.
+Las transiciones permiten a los elementos entrar y salir del DOM con gracia, en lugar de aparecer y desaparecer de repente.
 
 ```html
 <input type='checkbox' bind:checked=visible> visible
@@ -201,7 +201,7 @@ Transitions allow elements to enter and leave the DOM gracefully, rather than su
 </script>
 ```
 
-Transitions can have parameters — typically `delay` and `duration`, but often others, depending on the transition in question. For example, here's the `fly` transition from the [svelte-transitions](https://github.com/sveltejs/svelte-transitions) package:
+Las transiciones pueden tener parametros - tipicamente `delay` y `duration`, pero tambien otros, dependiendo de la transición en question. Por ejemplo, aqui esta la transición `fly` del paquete [svelte-transitions](https://github.com/sveltejs/svelte-transitions):
 
 ```html
 <input type='checkbox' bind:checked=visible> visible
@@ -219,7 +219,7 @@ Transitions can have parameters — typically `delay` and `duration`, but often 
 </script>
 ```
 
-An element can have separate `in` and `out` transitions:
+Un elemento puede tener transiciónes separadas para `in` y `out`:
 
 ```html
 <input type='checkbox' bind:checked=visible> visible
@@ -237,12 +237,12 @@ An element can have separate `in` and `out` transitions:
 </script>
 ```
 
-Transitions are simple functions that take a `node` and any provided `parameters` and return an object with the following properties:
+Las transiciones son funciones simples que toman un `nodo` y cualquier `parametro` provisto y retornan un objeto con las siguientes propiedades:
 
-* `duration` — how long the transition takes in milliseconds
-* `delay` — milliseconds before the transition starts
-* `easing` — an [easing function](https://github.com/rollup/eases-jsnext)
-* `css` — a function that accepts an argument `t` between 0 and 1 and returns the styles that should be applied at that moment
+* `duration` — Cuanto demora la transición en milisegundos
+* `delay` — milisegundos antes de que la transición comiense.
+* `easing` — una [easing function](https://github.com/rollup/eases-jsnext)
+* `css` — una función que acepta un argumento `t` entre `0` y `1`y retorna  los estilos que deberian aplicarse en ese momento
 * `tick` — a function that will be called on every frame, with the same `t` argument, while the transition is in progress
 
 Of these, `duration` is required, as is *either* `css` or `tick`. The rest are optional. Here's how the `fade` transition is implemented, for example:
