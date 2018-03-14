@@ -704,14 +704,14 @@ Los helpers son simples funciones que se usan en su plantilla. En el ejemplo ant
 	};
 </script>
 ```
-Por supuesto, podria usar `leftPad` dentro de las propiedades calculadas en lugar de usarlo en su plantilla. No hay una regla rigida acerca de cuando deben usarse expresiones con helpers freante a cuando deben usarse las propiedades calculadas - haga lo que sea que haga que su componente sea mas facil de entender para los siguientes desarrolladores.
+Por supuesto, podria usar `leftPad` dentro de las propiedades calculadas en lugar de usarlo en su plantilla. No hay una regla rigida acerca de cuando deben usarse expresiones con helpers freante a cuando deben usarse las propiedades calculadas - haga lo que necesite para que su componente sea mas facil de entender para los siguientes desarrolladores.
 
 > Las funciones helpers deberian de ser *puras* - en otras palabras, ellas no deberian tener efectos secundarios, y su valor de retorno solamente deberia de depender de sus argumentos.
 
 
 ### Metodos personalizados
 
-Ademas de los [metodos incorporados](#component-api), puede agregar sus propios metodos:
+Ademas de los [metodos incorporados](#component-api), puede agregar sus propios métodos:
 
 ```html
 <script>
