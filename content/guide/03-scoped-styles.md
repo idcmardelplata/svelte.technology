@@ -36,7 +36,7 @@ Esto es mucho mas simple que lograr el mismo efecto usando el [Shadow DOM](http:
 
 Por defecto, el mecanismo en cascada normal todavia se aplica - cualquier estilo global `.foo` todavia se aplicaria, y si su plantilla tiene [componentes anidados](#nested-components) con elementos `class="foo"`, hellos heredarian nuestros estilos.
 
-Si la opción `cascade: false` se pasa al compilador, los estilos *solo* se aplicaran al componente actual, a menos que opte por entrar en la cascada con el midificador `:global(...)` .
+Si la opción `cascade: false` se pasa al compilador, los estilos *solo* se aplicaran al componente actual, a menos que opte por entrar en la cascada con el modificador `:global(...)` .
 
 <!-- TODO `cascade: false` in the REPL -->
 
